@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+torch
+torchvision
+torchaudio
+segmentation-models-pytorch
+timm
+pillow
+numpy
+python-multipart
+pydantic
+motor
+python-dotenv
+opencv-python-headless
+scikit-learn
