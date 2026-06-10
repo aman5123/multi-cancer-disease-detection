@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}About Us - AI Healers{% endblock %}
+
+{% block content %}
+<main class="dashboard about-page text-center">
+    
+    <div class="team-header mt-xl mb-4">
+        <h1 class="hero-title">Meet The <span class="gradient-text">AI Healers</span></h1>
+        <p class="hero-subtitle mb-xl" style="max-width: 800px; margin: 0 auto;">Pioneering the next generation of automated medical analysis at Government Hydro Engineering College, Bilaspur.</p>
+    </div>
+
+    <!-- Project Motivation -->
+    <div class="detail-card" style="max-width: 900px; margin: 0 auto 3rem; text-align: left;">
+        <h3 class="text-accent mb-3" style="font-size: 1.5rem;"><i class="fa-solid fa-bullseye"></i> Our Mission & Motivation</h3>
+        <p class="text-secondary mb-3" style="font-size: 1.05rem; line-height: 1.8;">
+            The inception of <strong>AI Healers</strong> was driven by a critical need for accessible, democratized cancer screening. We recognized that early detection drastically improves the survivability of various cancers, yet sophisticated diagnostic tools remain geographically and financially gated.
+        </p>
+        <p class="text-secondary" style="font-size: 1.05rem; line-height: 1.8;">
+            As part of our 6th-semester curriculum, we undertook the challenging task of unifying disparate deep learning architectures—such as Vision Transformers for MRIs and U-Nets for Endoscopic segmentation—into a single seamless, high-performance web dashboard. Our platform is continuously evolving as we iterate on the models, expand our datasets, and strive to radically bridge the gap between complex AI research and practical clinical utility.
+        </p>
+    </div>
+
+    <div class="institution-card p-4" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; max-width: 900px; margin: 3rem auto; backdrop-filter: blur(12px);">
+        <h2>Government Hydro Engineering College, Bilaspur</h2>
+        <h4 class="text-accent mt-2">Department of Computer Science Engineering (AI & Data Science)</h4>
+        <p class="mt-2 text-secondary">6th Semester Project Work</p>
+        
+        <div class="mt-4 pt-4" style="border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="d-flex align-items-center justify-content-center" style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+                <img src="{{ url_for('static', filename='img/media__1776564200416.jpg') }}" alt="Er. Ravi Kumar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card-border);">
+                <div style="text-align: left;">
+                    <p class="mb-0 text-secondary" style="font-size: 0.9rem;">Under the expert guidance of</p>
+                    <h3 class="mb-0">Er. Ravi Kumar</h3>
+                    <p class="mb-0 text-secondary" style="font-size: 0.9rem;">Assistant Professor, CSE (AI&DS)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title mt-xl">
+        <div class="sub-badge" id="about">• OUR TEAM</div>
+        <h2>The Developers</h2>
+        <div class="title-underline"></div>
+    </div>
+
+    <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
+        
+        <!-- Member 1 -->
+        <div class="accuracy-card border-blue" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ url_for('static', filename='img/aman.jpg') }}" alt="Aman" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--color-purple);">
+            <h3 class="mt-2 text-primary">Aman</h3>
+            <p class="text-secondary" style="font-size: 0.9rem;">CSE (AI&DS)</p>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="accuracy-card border-purple" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ url_for('static', filename='img/media__1776564216375.jpg') }}" alt="Samriti" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--color-purple);">
+            <h3 class="mt-2 text-primary">Samriti</h3>
+            <p class="text-secondary" style="font-size: 0.9rem;">CSE (AI&DS)</p>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="accuracy-card border-orange" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ url_for('static', filename='img/media__1776564221907.jpg') }}" alt="Simran" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--color-orange);">
+            <h3 class="mt-2 text-primary">Simran</h3>
+            <p class="text-secondary" style="font-size: 0.9rem;">CSE (AI&DS)</p>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="accuracy-card border-green" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ url_for('static', filename='img/media__1776564227534.jpg') }}" alt="Sejal" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--color-green);">
+            <h3 class="mt-2 text-primary">Sejal</h3>
+            <p class="text-secondary" style="font-size: 0.9rem;">CSE (AI&DS)</p>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="accuracy-card border-blue" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="{{ url_for('static', filename='img/media__1776564209830.jpg') }}" alt="Kritika" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--color-blue);">
+            <h3 class="mt-2 text-primary">Kritika</h3>
+            <p class="text-secondary" style="font-size: 0.9rem;">CSE (AI&DS)</p>
+        </div>
+
+    </div>
+
+</main>
+{% endblock %}

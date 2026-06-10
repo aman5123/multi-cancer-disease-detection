@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Breast Cancer Models - AI Healers{% endblock %}
+
+{% block content %}
+<main class="dashboard disease-page">
+    <div class="disease-header">
+        <div class="badge-pill" style="color: #ba68c8; background: rgba(186, 104, 200, 0.1); border-color: rgba(186, 104, 200, 0.3);">
+            <i class="fa-solid fa-ribbon"></i> BREAST CANCER
+        </div>
+        <h1 class="hero-title">Breast Cancer <span class="text-purple">Classification & Segmentation</span></h1>
+        <p class="hero-subtitle mb-4">Leveraging high-resolution mammograms to identify and segment microcalcifications and mass tumors. Validated alongside BI-RADS scoring.</p>
+        
+        <div class="quick-stats">
+            <div class="stat-item">
+                <div class="stat-big text-purple">98.2%</div>
+                <div class="stat-label">ACCURACY</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-purple">2,478</div>
+                <div class="stat-label">CBIS STUDIES</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-purple">VGG-16</div>
+                <div class="stat-label">BASE MODEL</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disease-content-grid mt-xl">
+        <!-- Left Column: Upload -->
+        <div>
+            <h3 class="mb-3">Image Analysis</h3>
+            <div class="analysis-box">
+                <form id="inline-inference-breast" class="inference-form inline-form">
+                    <input type="hidden" name="model" value="breast_classification">
+                    <div class="upload-area drop-area inline-drop-area">
+                        <div class="upload-icon-circle bg-purple text-white"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h4>Drop Your Mammogram Here</h4>
+                        <p>Supports DICOM, JPEG, PNG — Screening Mammography</p>
+                        <button type="button" class="btn btn-primary mt-3 btn-browse" style="background-color: var(--color-purple);"><i class="fa-regular fa-folder-open"></i> Browse Files</button>
+                        <input type="file" name="image" class="file-input" hidden accept="image/*">
+                    </div>
+                    
+                    <div class="preview-container hidden my-3 text-center">
+                        <img class="image-preview" src="#" alt="Preview" style="max-width: 100%; max-height: 250px; border-radius: 8px; margin: 0 auto; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                        <button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: var(--color-purple);">Analyze Image</button>
+                    </div>
+                </form>
+                <div class="result-container hidden mt-4 result-box"></div>
+            </div>
+        </div>
+
+        <!-- Right Column: Details -->
+        <div>
+            <div class="detail-card h-100" style="padding: 2.5rem; margin-top: 2.5rem;">
+                <div class="detail-header">
+                    <div class="detail-icon icon-purple"><i class="fa-solid fa-microchip"></i></div>
+                    <div>
+                        <h3>Model Details</h3>
+                    </div>
+                </div>
+                
+                <div class="stats-table mt-4" style="gap: 1.5rem;">
+                    <div class="stat-row"><span>Architecture</span><span class="stat-value">VGG-16 + U-Net</span></div>
+                    <div class="stat-row"><span>Dataset</span><span class="stat-value">CBIS-DDSM</span></div>
+                    <div class="stat-row"><span>Training Studies</span><span class="stat-value">2,478</span></div>
+                    <div class="stat-row"><span>Validation AUC</span><span class="stat-value">0.991</span></div>
+                    <div class="stat-row"><span>Specificity</span><span class="stat-value">98.7%</span></div>
+                    <div class="stat-row"><span>Parameters</span><span class="stat-value">138M</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Healers - Cancer Detection AI{% endblock %}</title>
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <div style="background: linear-gradient(135deg, #6366f1, #a855f7); width: 38px; height: 38px; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);">
+                    <i class="fa-solid fa-dna" style="color: white; font-size: 1.1rem;"></i>
+                </div>
+                <h1 style="color: #6366f1; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.5px;">AI Healers</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('gi') }}" class="{% if request.endpoint == 'gi' %}active{% endif %}">GI Cancer</a>
+                <a href="{{ url_for('skin') }}" class="{% if request.endpoint == 'skin' %}active{% endif %}">Skin Cancer</a>
+                <a href="{{ url_for('breast') }}" class="{% if request.endpoint == 'breast' %}active{% endif %}">Breast Cancer</a>
+                <a href="{{ url_for('brain') }}" class="{% if request.endpoint == 'brain' %}active{% endif %}">Brain Cancer</a>
+                <a href="{{ url_for('about') }}" class="nav-about {% if request.endpoint == 'about' %}active{% endif %}">About</a>
+            </nav>
+            <div class="theme-toggle">
+                <input type="checkbox" class="checkbox" id="theme-switch">
+                <label for="theme-switch" class="checkbox-label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="ball"></span>
+                </label>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            <p>&copy; 2026 AI Healers Models. For demonstration purposes.</p>
+        </footer>
+    </div>
+
+    <!-- Universal Upload Modal (For pages that still use the popup, if any) -->
+    <div id="upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('upload-modal').style.display='none'">&times;</span>
+            <h2>Run Model Inference</h2>
+            <form id="inference-form-modal" class="mt-4 inference-form">
+                <div class="form-group">
+                    <label>Select Model Task:</label>
+                    <select name="model" class="modern-select">
+                        <optgroup label="Gastrointestinal Cancer">
+                            <option value="gi_classification">GI Classification (ResNet-50)</option>
+                            <option value="gi_segmentation">GI Segmentation (U-Net)</option>
+                        </optgroup>
+                        <optgroup label="Skin Cancer">
+                            <option value="skin_classification">Skin Classification (EfficientNet-B7)</option>
+                            <option value="skin_segmentation">Skin Segmentation (U-Net)</option>
+                        </optgroup>
+                        <optgroup label="Breast Cancer">
+                            <option value="breast_classification">Breast Classification (VGG-16)</option>
+                            <option value="breast_segmentation">Breast Segmentation (U-Net)</option>
+                        </optgroup>
+                        <optgroup label="Brain Cancer">
+                            <option value="brain_classification">Brain Classification (ViT-B16)</option>
+                            <option value="brain_segmentation">Brain Segmentation (U-Net)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <!-- To avoid ID conflicts between modal & inline, we use classes for generic drops -->
+                <div class="form-group upload-area drop-area">
+                    <i class="fa-solid fa-cloud-arrow-up fa-3x mb-2 text-accent"></i>
+                    <p>Drag & Drop medical image here or click to browse</p>
+                    <input type="file" name="image" class="file-input" hidden accept="image/*">
+                </div>
+                <!-- Preview area -->
+                <div class="preview-container hidden my-3 text-center">
+                    <img class="image-preview" src="#" alt="Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px; margin: 0 auto;">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Analyze Image</button>
+            </form>
+            <div class="result-container hidden mt-4 result-box"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=1.2"></script>
+</body>
+</html>

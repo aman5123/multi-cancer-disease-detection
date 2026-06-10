@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}GI Cancer Models - AI Healers{% endblock %}
+
+{% block content %}
+<main class="dashboard disease-page">
+    <div class="disease-header">
+        <div class="badge-pill" style="color: #00bcd4; background: rgba(0, 188, 212, 0.1); border-color: rgba(0, 188, 212, 0.3);">
+            <i class="fa-solid fa-stomach"></i> GASTROINTESTINAL CANCER
+        </div>
+        <h1 class="hero-title">GI Cancer <span class="text-blue">Classification & Segmentation</span></h1>
+        <p class="hero-subtitle mb-4">Upload endoscopic, colonoscopic, or upper GI tract images. Our AI detects polyps, colorectal, esophageal, and gastric cancer with pixel-level segmentation.</p>
+        
+        <div class="quick-stats">
+            <div class="stat-item">
+                <div class="stat-big text-blue">95.17%</div>
+                <div class="stat-label">ACCURACY</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-blue">4</div>
+                <div class="stat-label">CANCER TYPES</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-blue">ResNet-50</div>
+                <div class="stat-label">BASE MODEL</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disease-content-grid mt-xl">
+        <!-- Left Column: Upload -->
+        <div>
+            <h3 class="mb-3">Image Analysis</h3>
+            <div class="analysis-box">
+                <form id="inline-inference-gi" class="inference-form inline-form">
+                    <input type="hidden" name="model" value="gi_classification">
+                    <div class="upload-area drop-area inline-drop-area">
+                        <div class="upload-icon-circle bg-blue text-white"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h4>Drop Your GI Image Here</h4>
+                        <p>Supports JPEG, PNG — Endoscopy, Colonoscopy, Upper GI</p>
+                        <button type="button" class="btn btn-primary mt-3 btn-browse" style="background-color: var(--color-blue);"><i class="fa-regular fa-folder-open"></i> Browse Files</button>
+                        <input type="file" name="image" class="file-input" hidden accept="image/*">
+                    </div>
+                    
+                    <div class="preview-container hidden my-3 text-center">
+                        <img class="image-preview" src="#" alt="Preview" style="max-width: 100%; max-height: 250px; border-radius: 8px; margin: 0 auto; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                        <button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: var(--color-blue);">Analyze Image</button>
+                    </div>
+                </form>
+                <div class="result-container hidden mt-4 result-box"></div>
+            </div>
+        </div>
+
+        <!-- Right Column: Details -->
+        <div>
+            <div class="detail-card h-100" style="padding: 2.5rem; margin-top: 2.5rem;">
+                <div class="detail-header">
+                    <div class="detail-icon icon-blue"><i class="fa-solid fa-microchip"></i></div>
+                    <div>
+                        <h3>Model Details</h3>
+                    </div>
+                </div>
+                
+                <div class="stats-table mt-4" style="gap: 1.5rem;">
+                    <div class="stat-row"><span>Architecture</span><span class="stat-value">ResNet-50 + U-Net</span></div>
+                    <div class="stat-row"><span>Dataset</span><span class="stat-value">Kvasir-SEG + CVC-ClinicDB</span></div>
+                    <div class="stat-row"><span>Training Images</span><span class="stat-value">12,500+</span></div>
+                    <div class="stat-row"><span>Validation mIoU</span><span class="stat-value">0.868</span></div>
+                    <div class="stat-row"><span>F1 Score</span><span class="stat-value">0.912</span></div>
+                    <div class="stat-row"><span>Parameters</span><span class="stat-value">25.6M</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% block title %}AI Healers - Home{% endblock %}
+
+{% block content %}
+        <!-- Main Content -->
+        <main class="dashboard">
+            
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="badge-pill">
+                    <i class="fa-solid fa-circle-info"></i> ABOUT AI HEALERS
+                </div>
+                <h1 class="hero-title">AI at the Frontier of <br><span class="gradient-text">Cancer Early Detection</span></h1>
+                <p class="hero-subtitle">AI Healers is an open research platform combining state-of-the-art deep learning models with clinical imaging to democratize cancer screening and support early diagnosis across gastrointestinal, skin, breast, and brain cancers.</p>
+                <div style="margin-top: 2rem;">
+                    <button class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 1.5rem;" onclick="document.getElementById('upload-modal').style.display='flex'">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Try Inference
+                    </button>
+                    <button class="btn btn-outline" style="font-size: 1.1rem; padding: 0.8rem 1.5rem; margin-left: 1rem;">
+                        View Github
+                    </button>
+                </div>
+            </section>
+
+            <div class="section-title mt-xl">
+                <div class="sub-badge" id="about">• PERFORMANCE</div>
+                <h2>Model Accuracy by Cancer Type</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Accuracy Cards (Image 1 replica) -->
+            <div class="accuracy-grid">
+                <!-- Card 1: GI -->
+                <div class="accuracy-card border-blue" onclick="window.location.href='{{ url_for('gi') }}'" style="cursor: pointer;">
+                    <div class="card-icon icon-blue">
+                        <i class="fa-solid fa-stomach"></i>
+                    </div>
+                    <div class="metric text-blue">95.17%</div>
+                    <div class="cancer-type">Gastrointestinal</div>
+                    <div class="model-info">ResNet-50 + U-Net · Kvasir-SEG</div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-blue" style="width: 95.17%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Skin -->
+                <div class="accuracy-card border-orange" onclick="window.location.href='{{ url_for('skin') }}'" style="cursor: pointer;">
+                    <div class="card-icon icon-orange">
+                        <i class="fa-solid fa-virus-covid"></i>
+                    </div>
+                    <div class="metric text-orange">89.8%</div>
+                    <div class="cancer-type">Skin Cancer</div>
+                    <div class="model-info">EfficientNet-B7 · ISIC 2020</div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-orange" style="width: 89.8%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Breast -->
+                <div class="accuracy-card border-purple" onclick="window.location.href='{{ url_for('breast') }}'" style="cursor: pointer;">
+                    <div class="card-icon icon-purple">
+                        <i class="fa-solid fa-ribbon"></i>
+                    </div>
+                    <div class="metric text-purple">98.2%</div>
+                    <div class="cancer-type">Breast Cancer</div>
+                    <div class="model-info">VGG-16 + U-Net · CBIS-DDSM</div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-purple" style="width: 98.2%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Brain -->
+                <div class="accuracy-card border-green" onclick="window.location.href='{{ url_for('brain') }}'" style="cursor: pointer;">
+                    <div class="card-icon icon-green">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class="metric text-green">96.9%</div>
+                    <div class="cancer-type">Brain Cancer</div>
+                    <div class="model-info">ViT-B16 + U-Net · BraTS 2023</div>
+                    <div class="progress-container">
+                        <div class="progress-bar bg-green" style="width: 96.9%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Removed "Model Architecture Details" section from Home page to push to individual pages -->
+
+            <div class="section-title mt-xl">
+                <h2>Training Datasets</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Datasets List -->
+            <div class="datasets-list">
+                <!-- Dataset 1 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-blue"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>Kvasir-SEG</h4>
+                        <p>1,000 gastrointestinal polyp images with pixel-wise segmentation masks from Vestre Viken Health Trust, Norway.</p>
+                    </div>
+                    <div class="dataset-count count-blue">1,000 IMAGES</div>
+                </div>
+
+                <!-- Dataset 2 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-blue"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>kvasir-v1</h4>
+                        <p>4,000 multi-class gastrointestinal endoscopy images categorized into 8 clinically relevant classes, captured from real-world endoscopic procedures and annotated for medical image analysis tasks.</p>
+                    </div>
+                    <div class="dataset-count count-blue">4,000 IMAGES</div>
+                </div>
+
+                <!-- Dataset 3 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-orange"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>ISIC 2020 Challenge Dataset</h4>
+                        <p>33,126 dermoscopic images with expert-annotated diagnosis labels across 9 lesion types from the International Skin Imaging Collaboration.</p>
+                    </div>
+                    <div class="dataset-count count-orange">33,126 IMAGES</div>
+                </div>
+
+                <!-- Dataset 4 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-orange"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>HAM10000</h4>
+                        <p>10,015 multi-source dermatoscopic images of pigmented skin lesions with validated clinical diagnoses.</p>
+                    </div>
+                    <div class="dataset-count count-orange">10,015 IMAGES</div>
+                </div>
+
+                <!-- Dataset 5 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-purple"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>CBIS-DDSM (Curated Breast Imaging Subset)</h4>
+                        <p>2,478 mammography studies with pixel-level annotations from the Digital Database for Screening Mammography.</p>
+                    </div>
+                    <div class="dataset-count count-purple">2,478 STUDIES</div>
+                </div>
+
+                <!-- Dataset 6 -->
+                <div class="dataset-card">
+                    <div class="dataset-icon icon-green"><i class="fa-solid fa-database"></i></div>
+                    <div class="dataset-info">
+                        <h4>BraTS 2023 (Brain Tumor Segmentation)</h4>
+                        <p>7,023 pre-operative multi-site, multi-scanner, multi-parametric MRI scans, the gold standard benchmark for brain tumor segmentation.</p>
+                    </div>
+                    <div class="dataset-count count-green">7,023 MRI SCANS</div>
+                </div>
+            </div>
+
+            <!-- Workflow Section -->
+            <div class="section-title mt-xl">
+                <div class="sub-badge">• WORKFLOW</div>
+                <h2>How AI Healers Works</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="accuracy-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 4rem;">
+                <div class="accuracy-card" style="border-top: 3px solid #6366f1;">
+                    <div class="card-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                        <i class="fa-solid fa-file-image"></i>
+                    </div>
+                    <h3 class="mb-2">1. Image Upload</h3>
+                    <p class="text-secondary" style="font-size: 0.95rem;">Upload medical imaging data including volumetric MRIs, Endoscopies, or Dermoscopic photos securely into our processing queue.</p>
+                </div>
+                <div class="accuracy-card" style="border-top: 3px solid #8b5cf6;">
+                    <div class="card-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="mb-2">2. Deep Learning</h3>
+                    <p class="text-secondary" style="font-size: 0.95rem;">Our backend orchestrates advanced state-of-the-art models like Vision Transformers (ViT) and CNNs to classify and segment anomalies at the exact pixel level.</p>
+                </div>
+                <div class="accuracy-card" style="border-top: 3px solid #ec4899;">
+                    <div class="card-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                        <i class="fa-solid fa-notes-medical"></i>
+                    </div>
+                    <h3 class="mb-2">3. Clinical Insights</h3>
+                    <p class="text-secondary" style="font-size: 0.95rem;">Receive high-confidence diagnostic likelihood scores within seconds, giving medical practitioners robust second opinions for accurate disease staging.</p>
+                </div>
+            </div>
+        </main>
+{% endblock %}

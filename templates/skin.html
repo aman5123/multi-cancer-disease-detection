@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Skin Cancer Models - AI Healers{% endblock %}
+
+{% block content %}
+<main class="dashboard disease-page">
+    <div class="disease-header">
+        <div class="badge-pill" style="color: #ff7043; background: rgba(255, 112, 67, 0.1); border-color: rgba(255, 112, 67, 0.3);">
+            <i class="fa-solid fa-virus-covid"></i> SKIN CANCER
+        </div>
+        <h1 class="hero-title">Skin Cancer <span class="text-orange">Classification & Segmentation</span></h1>
+        <p class="hero-subtitle mb-4">Upload dermoscopic images. Our robust EfficientNet-based AI securely classifies 9 distinct skin lesion types including melanoma, nevus, and basal cell carcinoma.</p>
+        
+        <div class="quick-stats">
+            <div class="stat-item">
+                <div class="stat-big text-orange">89.8%</div>
+                <div class="stat-label">ACCURACY</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-orange">9</div>
+                <div class="stat-label">LESION TYPES</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-big text-orange">EfficientNet-B7</div>
+                <div class="stat-label">BASE MODEL</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disease-content-grid mt-xl">
+        <!-- Left Column: Upload -->
+        <div>
+            <h3 class="mb-3">Image Analysis</h3>
+            <div class="analysis-box">
+                <form id="inline-inference-skin" class="inference-form inline-form">
+                    <input type="hidden" name="model" value="skin_classification">
+                    <div class="upload-area drop-area inline-drop-area">
+                        <div class="upload-icon-circle bg-orange text-white"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h4>Drop Your Dermoscopic Image Here</h4>
+                        <p>Supports JPEG, PNG — Dermoscopy, Clinical Skin Photos</p>
+                        <button type="button" class="btn btn-primary mt-3 btn-browse" style="background-color: var(--color-orange);"><i class="fa-regular fa-folder-open"></i> Browse Files</button>
+                        <input type="file" name="image" class="file-input" hidden accept="image/*">
+                    </div>
+                    
+                    <div class="preview-container hidden my-3 text-center">
+                        <img class="image-preview" src="#" alt="Preview" style="max-width: 100%; max-height: 250px; border-radius: 8px; margin: 0 auto; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                        <button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: var(--color-orange);">Analyze Image</button>
+                    </div>
+                </form>
+                <div class="result-container hidden mt-4 result-box"></div>
+            </div>
+        </div>
+
+        <!-- Right Column: Details -->
+        <div>
+            <div class="detail-card h-100" style="padding: 2.5rem; margin-top: 2.5rem;">
+                <div class="detail-header">
+                    <div class="detail-icon icon-orange"><i class="fa-solid fa-microchip"></i></div>
+                    <div>
+                        <h3>Model Details</h3>
+                    </div>
+                </div>
+                
+                <div class="stats-table mt-4" style="gap: 1.5rem;">
+                    <div class="stat-row"><span>Architecture</span><span class="stat-value">EfficientNet-B7 + Compound Scaling</span></div>
+                    <div class="stat-row"><span>Dataset</span><span class="stat-value">ISIC 2020 + HAM10000</span></div>
+                    <div class="stat-row"><span>Training Images</span><span class="stat-value">43,141</span></div>
+                    <div class="stat-row"><span>Validation AUC-ROC</span><span class="stat-value">0.943</span></div>
+                    <div class="stat-row"><span>Sensitivity</span><span class="stat-value">94.1%</span></div>
+                    <div class="stat-row"><span>Parameters</span><span class="stat-value">66M</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
