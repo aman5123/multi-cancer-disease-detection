@@ -192,21 +192,6 @@ npm run dev      # Development server
 npm run build    # Production build
 npm run preview  # Preview production build
 npm run lint     # ESLint
-```
-
-## Team — AI Healers
-
-| Role | Member |
-|------|--------|
-| Lead Developer | Aman |
-| ML Engineer | Samrit |
-| Frontend Developer | Sejal |
-| Researcher | Kritika |
-| UI Designer | Simran |
-
-**Mentor:** Er. Ravi Kumar  
-**Department:** Computer Science & Engineering (AI & DS)
-
 ---
 
-*Capstone Project — 2024*
+*Capstone Project — 202*
